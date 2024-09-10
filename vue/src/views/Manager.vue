@@ -3,8 +3,8 @@
     <!--  头部  -->
     <div class="manager-header">
       <div class="manager-header-left">
-        <img src="@/assets/imgs/logo.png" />
-        <div class="title">后台管理系统</div>
+        <img src="@/assets/imgs/logo.png" style="border-radius: 50%" />
+        <div class="title">宠物之家管理系统</div>
       </div>
 
       <div class="manager-header-center">
