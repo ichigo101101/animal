@@ -18,7 +18,7 @@
                           <div style="color: #575353; font-size: 13px; margin-top: 5px">性别：{{ item.sex }}， 年龄：{{ item.age }}， <span style="color: #7d3d0c">{{ item.status }}</span></div>
                           <div style="margin-top: 15px; color: #4b4949; text-align: left">认识一下我：{{ item.descr }}</div>
                           <div>
-                              <el-button type="success" size="mini" style="margin-top: 20px">领养</el-button>
+                              <el-button type="success" size="mini" style="margin-top: 20px" :disabled="item.status === '已领养'" @click="adopt(item)">领养</el-button>
                           </div>
                       </div>
                   </el-col>
@@ -70,6 +70,26 @@ export default {
                     this.$message.error(res.msg)
                 }
             })
+        },
+        adopt(animal){
+            let data = JSON.parse(JSON.stringify(animal))
+            data.status = '已领养'
+            this.$request.put('/animal/update',data).then(res =>{
+                if(res.code === '200') {
+                    this.$message.success('领养成功，请好好善待它哦~')
+                    this.loadAnimal()
+                    let adoptData = {
+                        userId: this.user.id,
+                        animalId: data.id
+                    }
+                    this.$request.post('/adopt/add',adoptData).then(res => {
+                        if(res.code !== '200') {
+                            this.$message.error(res.msg)
+                        }
+                    })
+                }
+                }
+            )
         }
     }
 }

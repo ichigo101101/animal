@@ -5,7 +5,7 @@
 
 .manager-header {
     display: flex;
-    background-color: #f8bdaf;
+    background-color: #d0886a;
 }
 
 .manager-header-left {
@@ -26,7 +26,7 @@
     margin-left: 5px;
     font-size: 20px;
     font-weight: bold;
-    color: #ddd
+    color: #613320
 }
 
 .manager-header-center {
@@ -47,7 +47,7 @@
     display: flex;
     align-items: center;
     padding-right: 10px;
-    color: #ccc;
+    color: #613320;
     cursor: default
 }
 
@@ -76,7 +76,7 @@
 
 .manager-main-right .search {
     padding: 10px;
-    background-color: #fff;
+    background-color: #fff0f0;
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
@@ -116,16 +116,16 @@
 }
 
 .el-submenu__title {
-    color: #ccc;
+    color: #613320;
     height: 50px;
     line-height: 50px;
 }
 
 .el-menu-item {
-    color: #ccc;
+    color: #613320;
     height: 50px;
     line-height: 50px;
-    background-color: #d78971 !important; /* 必须加上这个背景色，否则鼠标离开会出现白色 */
+    background-color: #eabdaf !important; /* 必须加上这个背景色，否则鼠标离开会出现白色 */
 }
 
 .el-menu-item.is-active {
@@ -138,7 +138,7 @@
 }
 
 .el-menu .is-active {
-    color: #3399ff !important;
+    color: #613320 !important;
 }
 
 .el-submenu__title:hover {
@@ -159,7 +159,7 @@
 }
 
 .el-breadcrumb__inner {
-    color: #ccc !important;
+    color: #613320 !important;
 }
 
 .el-dropdown-menu {
@@ -172,5 +172,5 @@
 
 th.el-table__cell {
     background-color: #f8f8f8 !important;
-    color: #666;
+    color: #613320;
 }
