@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div style="width: 400px; padding: 30px; background-color: white; border-radius: 5px;">
+    <div style="width: 400px; padding: 30px; background-color: rgba(255,255,255,0.5); border-radius: 5px;">
       <div style="text-align: center; font-size: 20px; margin-bottom: 20px; color: #333">欢迎注册</div>
       <el-form :model="form" :rules="rules" ref="formRef">
         <el-form-item prop="username">
@@ -41,7 +41,7 @@ export default {
       }
     }
     return {
-      form: {},
+      form: {role:'USER'},
       rules: {
         username: [
           { required: true, message: '请输入账号', trigger: 'blur' },
@@ -65,7 +65,7 @@ export default {
           // 验证通过
           this.$request.post('/register', this.form).then(res => {
             if (res.code === '200') {
-              this.$router.push('/')  // 跳转登录页面
+              this.$router.push('/login')  // 跳转登录页面
               this.$message.success('注册成功')
             } else {
               this.$message.error(res.msg)
