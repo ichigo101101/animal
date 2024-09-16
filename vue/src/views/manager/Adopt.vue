@@ -1,7 +1,13 @@
 <template>
     <div>
         <div class="search">
-            <el-input placeholder="请输入标题查询" style="width: 200px" v-model="title"></el-input>
+            <el-select v-model="animalId" placeholder="请选择宠物" style="width: 200px" v-if="user.role === 'ADMIN'">
+                <el-option v-for="item in animalData" :label="item.name" :value="item.id"></el-option>
+            </el-select>
+            <el-select v-model="status" placeholder="请选择状态" style="width: 200px; margin-left: 5px">
+                <el-option label="领养中" value="领养中"></el-option>
+                <el-option label="已归还" value="已归还"></el-option>
+            </el-select>
             <el-button type="info" plain style="margin-left: 10px" @click="load(1)">查询</el-button>
             <el-button type="warning" plain style="margin-left: 10px" @click="reset">重置</el-button>
         </div>
@@ -54,17 +60,31 @@
                 pageNum: 1,   // 当前的页码
                 pageSize: 10,  // 每页显示的个数
                 total: 0,
+                status:null,
+                animalId:null,
                 title: null,
                 fromVisible: false,
                 form: {},
                 user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
-                ids: []
+                ids: [],
+                animalData:[]
             }
         },
         created() {
             this.load(1)
+            this.animalData()
+
         },
         methods: {
+            loadAnimal() {
+                this.$request.get('/adopt/selectChange').then(res => {
+                    if (res.code === '200') {
+                        this.animalData = res.data
+                    } else {
+                        this.$message.error(res.msg)
+                    }
+                })
+            },
             handleAdd() {   // 新增数据
                 this.form = {}  // 新增数据的时候清空数据
                 this.fromVisible = true   // 打开弹窗
@@ -122,7 +142,8 @@
                     params: {
                         pageNum: this.pageNum,
                         pageSize: this.pageSize,
-                        title: this.title,
+                        status:this.status,
+                        animalId:this.animalId,
                     }
                 }).then(res => {
                     this.tableData = res.data?.list
@@ -130,7 +151,8 @@
                 })
             },
             reset() {
-                this.title = null
+                this.status = null
+                this.animalId = null
                 this.load(1)
             },
             handleCurrentChange(pageNum) {

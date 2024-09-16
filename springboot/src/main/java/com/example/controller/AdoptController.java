@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.common.Result;
 import com.example.entity.Adopt;
+import com.example.entity.Animal;
 import com.example.service.AdoptService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
@@ -79,6 +80,12 @@ public class AdoptController {
                              @RequestParam(defaultValue = "10") Integer pageSize) {
         PageInfo<Adopt> page = adoptService.selectPage(adopt, pageNum, pageSize);
         return Result.success(page);
+    }
+
+    @GetMapping("/selectChange")
+    public Result selectChange() {
+        List<Animal> list = adoptService.selectChange();
+        return Result.success(list);
     }
 
 }
