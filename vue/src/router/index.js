@@ -27,6 +27,7 @@ const routes = [
       { path: 'animal', name: 'Animal', meta: { name: '宠物信息' }, component: () => import('../views/manager/Animal') },
       { path: 'adopt', name: 'Adopt', meta: { name: '领养记录' }, component: () => import('../views/manager/Adopt') },
       { path: 'room', name: 'Room', meta: { name: '房间信息' }, component: () => import('../views/manager/Room') },
+      { path: 'foster', name: 'Foster', meta: { name: '寄养信息' }, component: () => import('../views/manager/Foster') },
     ]
   },
   {
