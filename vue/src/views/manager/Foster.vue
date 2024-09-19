@@ -29,6 +29,7 @@
                         <el-button plain type="primary" v-if="user.role === 'USER' && scope.row.status === '待确认'" @click="handleEdit(scope.row)" size="mini">编辑</el-button>
                         <el-button plain type="danger" v-if="user.role === 'USER' && scope.row.status === '待确认'" size="mini" @click=del(scope.row.id)>撤回寄养</el-button>
                         <el-button plain type="primary" v-if="user.role === 'ADMIN' && scope.row.status === '待确认'" size="mini" @click=roomInit(scope.row)>分配房间</el-button>
+                        <el-button plain type="primary" v-if="user.role === 'ADMIN' && scope.row.status === '寄养中'" size="mini" @click=back(scope.row)>领回</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -112,6 +113,11 @@
             this.loadRooms()
         },
         methods: {
+            back(row) {
+                this.form = JSON.parse(JSON.stringify(row))
+                this.form.status = '已领回'
+                this.save()
+            },
             fosterSave() {
                 this.form.status = '寄养中'
                 this.$request.put('/foster/update', this.form).then(res => {
