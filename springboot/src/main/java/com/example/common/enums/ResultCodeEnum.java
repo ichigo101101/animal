@@ -14,6 +14,8 @@ public enum ResultCodeEnum {
     USER_ACCOUNT_ERROR("5003", "账号或密码错误"),
     USER_NOT_EXIST_ERROR("5004", "用户不存在"),
     PARAM_PASSWORD_ERROR("5005", "原密码输入错误"),
+    ACCOUNT_LOW_ERROR("5006", "账户余额不足，请到个人中心充值"),
+
     ;
 
     public String code;

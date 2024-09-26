@@ -20,13 +20,13 @@ public class Orders implements Serializable {
     private String userName;
     private String goodsImg;
     private String goodsName;
-    private String goodsId;
+    private Integer goodsId;
 
-    public String getGoodsId() {
+    public Integer getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(String goodsId) {
+    public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
     }
 
