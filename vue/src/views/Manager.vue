@@ -50,6 +50,7 @@
             <el-menu-item index="/goods" v-if="user.role === 'ADMIN'">宠物用品</el-menu-item>
             <el-menu-item index="/goodsUser" v-else>宠物用品</el-menu-item>
             <el-menu-item index="/orders">订单信息</el-menu-item>
+            <el-menu-item index="/submit">流浪宠物上报</el-menu-item>
           </el-submenu>
 
           <el-submenu index="user">
