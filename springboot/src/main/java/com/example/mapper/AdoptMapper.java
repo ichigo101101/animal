@@ -34,4 +34,5 @@ public interface AdoptMapper {
 
     @Select("select distinct animal_id from adopt group by animal_id")
     List<Adopt> selectChange();
+
 }
