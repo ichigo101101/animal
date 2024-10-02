@@ -72,7 +72,7 @@
         },
         created() {
             this.load(1)
-            this.animalData()
+            this.loadAnimal()
 
         },
         methods: {
